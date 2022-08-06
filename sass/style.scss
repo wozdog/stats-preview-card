@@ -65,9 +65,23 @@ h1 {
 }
 
 .main-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    isolation: isolate;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    background-color: var(--clr-accent-400);
+    mix-blend-mode: overlay;
+    inset: 0;
+    z-index: 1;
+  }
 }
 
 .heading {
@@ -82,6 +96,7 @@ h1 {
 }
 
 .stats {
+  --flow-spacer: 3.8rem;
   list-style: none;
   span {
     display: block;
