@@ -21,6 +21,9 @@
   --bp-medium: 25em;
 
   --spacer: 4.5rem;
+  --radius: 1rem;
+
+  --split: 50em;
 }
 
 body {
@@ -48,10 +51,6 @@ h1 {
   display: grid;
   grid-auto-flow: row;
   grid-auto-columns: 1fr;
-
-  @media (min-width: 50em) {
-    grid-auto-flow: column;
-  }
 }
 
 .flow-content > * + * {
@@ -62,8 +61,14 @@ h1 {
 
 .card {
   background-color: var(--clr-primary-400);
-  border-radius: 1rem;
+  border-radius: var(--radius);
   overflow: hidden;
+  text-align: center;
+
+  @media (min-width: 50em) {
+    grid-auto-flow: column;
+    text-align: start;
+  }
 }
 
 .main-image {
@@ -94,7 +99,7 @@ h1 {
 
 .content {
   --flow-spacer: 1.8rem;
-  padding: var(--spacer);
+  padding: clamp(2rem, 7vw, var(--spacer));
 
   @media (min-width: 50em) {
     grid-column: 2 / 1;
@@ -105,6 +110,11 @@ h1 {
   --flow-spacer: 3.8rem;
   list-style: none;
   text-transform: uppercase;
+
+  @media (min-width: 30em) {
+    grid-auto-flow: column;
+  }
+
   span {
     font-size: 1.5rem;
     display: block;
