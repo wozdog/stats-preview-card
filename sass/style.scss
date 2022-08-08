@@ -1,5 +1,8 @@
 @forward "./reset.scss";
 
+$bp-card: 60em;
+$bp-stats: 30em;
+
 :root {
   --clr-primary-700: hsl(233, 47%, 7%);
   --clr-primary-400: hsl(244, 38%, 16%);
@@ -20,13 +23,11 @@
   --ff-inter: "Inter", sans-serif;
   --ff-lexend: "Lexend Deca", sans-serif;
 
-  --max-width: 1100px;
+  --max-width: 1110px;
   --bp-medium: 25em;
 
   --spacer: 4.5rem;
   --radius: 1rem;
-
-  --split: 50em;
 }
 
 body {
@@ -70,7 +71,7 @@ h1 {
   overflow: hidden;
   text-align: center;
 
-  @media (min-width: 50em) {
+  @media (min-width: $bp-card) {
     grid-auto-flow: column;
     text-align: start;
   }
@@ -103,22 +104,25 @@ h1 {
 }
 
 .content {
-  --flow-spacer: 1.8rem;
+  --flow-spacer: var(--spacer);
   padding: clamp(2rem, 7vw, var(--spacer));
 
-  @media (min-width: 50em) {
+  @media (min-width: $bp-card) {
     grid-column: 2 / 1;
   }
 }
 
+.description {
+  --flow-spacer: 1.3rem;
+}
+
 .stats {
-  --flow-spacer: 3.8rem;
   font-size: var(--fs-300);
   line-height: 2.083333;
   list-style: none;
   text-transform: uppercase;
 
-  @media (min-width: 30em) {
+  @media (min-width: $bp-stats) {
     grid-auto-flow: column;
   }
 
